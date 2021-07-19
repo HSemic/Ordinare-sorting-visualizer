@@ -25,7 +25,7 @@ $ npm i
 
 The app was built using the [React library](https://reactjs.org/) and bootstrapped using create-react-app.
 
-Code itself was written using [TypeScript](https://www.typescriptlang.org/), a JavaScript superset.
+Code itself was written using [TypeScript](https://www.typescriptlang.org/), a statically typed JavaScript superset.
 
 UI and styling was done using [MaterialUI](https://material-ui.com/), a React UI framework.
 

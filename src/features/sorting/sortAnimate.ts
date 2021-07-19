@@ -32,7 +32,7 @@ export const animats = (
     const currentTrace: JSX.Element[] = trace[i].slice();
 
     switch (anims[i].length) {
-      case 1:
+      case 2:
         if (anims[i][0] === 'doneall') {
           for (let j = 0; j < currentTrace.length; j++) {
             currentTrace[j] = React.cloneElement(currentTrace[j], {
@@ -41,7 +41,7 @@ export const animats = (
           }
         }
         break;
-      case 2:
+      case 3:
         if (anims[i][1] === 'select') {
           currentTrace[anims[i][0] as number] = React.cloneElement(
             currentTrace[anims[i][0] as number],
@@ -79,7 +79,7 @@ export const animats = (
           );
         }
         break;
-      case 3:
+      case 4:
         if (anims[i][2] === 'select') {
           currentTrace[anims[i][0] as number] = React.cloneElement(
             currentTrace[anims[i][0] as number],

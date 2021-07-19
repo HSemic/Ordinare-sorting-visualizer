@@ -79,6 +79,22 @@ const useStyles = makeStyles((theme: Theme) =>
       color: '#F7F7FF',
       display: 'flex',
       justifyContent: 'center'
+    },
+    explanationContainer: {
+      marginTop: '3rem',
+      height: '20rem',
+      width: '40rem',
+      [theme.breakpoints.down('md')]: {
+        height: '12rem',
+        width: '30rem'
+      },
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor:
+        theme.palette.type === 'light'
+          ? theme.palette.sortBackgroundColor.main
+          : theme.palette.sortBackgroundColor.dark
     }
   })
 );
@@ -94,6 +110,7 @@ const SortingContainer = (): React.ReactElement => {
   const [trace, setTrace] = useState<JSX.Element[][]>([]);
   const [currentBars, setCurrentBars] = useState<JSX.Element[]>([]);
   const [timeouts, setTimeouts] = useState<NodeJS.Timeout[]>([]);
+  const [explanation, setExplanation] = useState('');
 
   const { size, speed, sortingAlgorithm, array, playing } = useAppSelector(
     (state) => state.sorting
@@ -147,6 +164,7 @@ const SortingContainer = (): React.ReactElement => {
       const t = setTimeout(() => {
         setCurrentBars(trace[i]);
         setCurrentItem(i);
+        setExplanation(animations[i][animations[i].length - 1] as string);
       }, (defSpeedMs / speed) * j);
       timeouts.push(t);
       j++;
@@ -198,6 +216,7 @@ const SortingContainer = (): React.ReactElement => {
 
   useEffect(() => {
     setCurrentBars(trace[0]);
+    console.log(animations);
   }, [trace]);
 
   useEffect(() => {
@@ -213,6 +232,10 @@ const SortingContainer = (): React.ReactElement => {
   useEffect(() => {
     if (playing === true) run(currentItem);
   }, [currentItem]);
+
+  useEffect(() => {
+    console.log(explanation);
+  }, [explanation]);
 
   return (
     <React.Fragment>
@@ -286,7 +309,13 @@ const SortingContainer = (): React.ReactElement => {
           />
         </ButtonGroup>
       </Grid>
-      <Grid item container xs={8} style={{ margin: 'auto' }} justify="center">
+      <Grid
+        item
+        container
+        xs={8}
+        style={{ margin: 'auto', marginTop: '3rem' }}
+        justify="center"
+      >
         <Grid item container spacing={2} style={{ minWidth: '40rem' }}>
           <Grid item xs={2}>
             <Paper
@@ -328,6 +357,13 @@ const SortingContainer = (): React.ReactElement => {
             </Paper>
           </Grid>
         </Grid>
+      </Grid>
+      <Grid item container xs={8} style={{ margin: 'auto' }} justify="center">
+        <Paper className={classes.explanationContainer}>
+          <Typography variant="body2" align="center">
+            {explanation}
+          </Typography>
+        </Paper>
       </Grid>
     </React.Fragment>
   );

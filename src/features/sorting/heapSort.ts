@@ -33,9 +33,24 @@ export const getHeapSortAnimations = (arr: number[]) => {
     // });
     let temp = array[i];
 
-    animations.push([i, j, 'swap-highlight']);
-    animations.push([i, j, 'swap-swap']);
-    animations.push([i, j, 'restore']);
+    animations.push([
+      i,
+      j,
+      'swap-highlight',
+      `swap bar on index ${i} with bar on index ${j}`
+    ]);
+    animations.push([
+      i,
+      j,
+      'swap-swap',
+      `swap bar on index ${i} with bar on index ${j}`
+    ]);
+    animations.push([
+      i,
+      j,
+      'restore',
+      `swap bar on index ${i} with bar on index ${j}`
+    ]);
 
     array[i] = array[j];
     array[j] = temp;
@@ -58,6 +73,6 @@ export const getHeapSortAnimations = (arr: number[]) => {
   }
 
   heapSort();
-  animations.push(['doneall']);
+  animations.push(['doneall', 'all bars in final positions']);
   return animations;
 };

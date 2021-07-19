@@ -43,34 +43,59 @@ export const getMergeSortAnimations = (arr: number[]) => {
     let j = midIndex + 1;
     while (i <= midIndex && j <= endIndex) {
       //push once to change bar colors
-      animations.push([i, j, 'select']);
+      animations.push([i, j, 'select', `select bars on indices ${i} and ${j}`]);
       //push twice to change colors back
-      animations.push([i, j, 'restore']);
+      animations.push([
+        i,
+        j,
+        'restore',
+        `deselect bars on indices ${i} and ${j}`
+      ]);
       //compare values from two halves and push pair of indexes to animations array,
       //that indicates replacement
       if (auxiliaryArray[i] <= auxiliaryArray[j]) {
-        animations.push([k, auxiliaryArray[i], 'updateheight']);
+        animations.push([
+          k,
+          auxiliaryArray[i],
+          'updateheight',
+          `update height of bar on index ${i}`
+        ]);
         mainArray[k++] = auxiliaryArray[i++];
       } else {
-        animations.push([k, auxiliaryArray[j], 'updateheight']);
+        animations.push([
+          k,
+          auxiliaryArray[j],
+          'updateheight',
+          `update height of bar on index ${j}`
+        ]);
         mainArray[k++] = auxiliaryArray[j++];
       }
     }
     //next two while loops handle cases where one or both halves haven't been exhausted.
     while (i <= midIndex) {
-      animations.push([i, i, 'select']);
-      animations.push([i, i, 'restore']);
-      animations.push([k, auxiliaryArray[i], 'updateheight']);
+      animations.push([i, i, 'select', `select bar on index ${i}`]);
+      animations.push([i, i, 'restore', `deselect bar on index ${i}`]);
+      animations.push([
+        k,
+        auxiliaryArray[i],
+        'updateheight',
+        `update height of bar on index ${i}`
+      ]);
       mainArray[k++] = auxiliaryArray[i++];
     }
     while (j <= endIndex) {
-      animations.push([j, j, 'select']);
-      animations.push([j, j, 'restore']);
-      animations.push([k, auxiliaryArray[j], 'updateheight']);
+      animations.push([j, j, 'select', `select bar on index ${j}`]);
+      animations.push([j, j, 'restore', `deselect bar on index ${j}`]);
+      animations.push([
+        k,
+        auxiliaryArray[j],
+        'updateheight',
+        `update height of bar on index ${j}`
+      ]);
       mainArray[k++] = auxiliaryArray[j++];
     }
   };
   mergeSortHelper(array, auxiliaryArray, 0, array.length - 1);
-  animations.push(['doneall']);
+  animations.push(['doneall', 'all bars in final positions']);
   return animations;
 };

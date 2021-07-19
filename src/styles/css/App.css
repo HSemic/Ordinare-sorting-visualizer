@@ -1,0 +1,23 @@
+html {
+  font-size: 62.5%; /* 62.5% of 16px = 10px */
+}
+
+.barIdleLight {
+  background-color: rgb(120, 107, 255);
+}
+
+.barSelected {
+  background-color: rgb(60, 49, 178);
+}
+
+.barSwapped {
+  background-color: #5747ff;
+}
+
+.barDone {
+  background-color: green;
+}
+
+.barMoved {
+  background-color: red;
+}

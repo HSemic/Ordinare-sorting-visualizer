@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import { ThemeProvider } from '@material-ui/core';
@@ -20,9 +20,17 @@ import { useAppSelector } from './app/hooks';
 
 import logo from './assets/img/logo/logo1.png';
 
+import ReactGA from 'react-ga';
+
+ReactGA.initialize('UA-190519034-1');
+
 const defFontSize = '3.1rem';
 
 const App = (): React.ReactElement => {
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  });
+
   const darkThemeActive = useAppSelector((state) => state.ui.darkTheme);
 
   const [sectionHeroRef, sectionAboutRef, sectionSortRef, sectionContactRef] = [

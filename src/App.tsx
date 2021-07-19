@@ -84,6 +84,11 @@ const App = (): React.ReactElement => {
           name="description"
           content="Visualizer of various sorting algorithms"
         />
+        <meta
+          name="keywords"
+          content="sorting, visualizer, react, typescript, materialui"
+        ></meta>
+        <meta name="author" content="HSemic"></meta>
       </Helmet>
 
       <Paper style={{ transition: 'all .3s' }}>

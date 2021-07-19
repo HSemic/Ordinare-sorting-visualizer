@@ -17,7 +17,7 @@ The purpose is two-fold: To create a meaningful learning tool for anyone wishing
 The app is already deployed and you can use the final product on this [link](https://ordinare.netlify.app/). 
 If you want to play around with it locally, clone this repo and install the dependencies:
 
-$ git clone https://github.com/ramiz-rahman/Ordinare-sorting-visualizer.git
+$ git clone https://github.com/HSemic/Ordinare-sorting-visualizer.git
 $ cd Ordinare-sorting-visualizer
 $ npm i
 

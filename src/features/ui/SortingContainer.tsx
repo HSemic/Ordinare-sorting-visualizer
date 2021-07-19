@@ -54,6 +54,9 @@ const useStyles = makeStyles((theme: Theme) =>
       minWidth: '40rem',
       padding: '1rem',
       height: '25rem',
+      [theme.breakpoints.down('md')]: {
+        height: '15rem'
+      },
       backgroundColor:
         theme.palette.type === 'light'
           ? theme.palette.sortBackgroundColor.main
@@ -71,6 +74,11 @@ const useStyles = makeStyles((theme: Theme) =>
       width: '100%',
       minWidth: '40rem',
       marginTop: '1rem'
+    },
+    legend: {
+      color: '#F7F7FF',
+      display: 'flex',
+      justifyContent: 'center'
     }
   })
 );
@@ -277,6 +285,49 @@ const SortingContainer = (): React.ReactElement => {
             onOptionSwitch={switchSpeed}
           />
         </ButtonGroup>
+      </Grid>
+      <Grid item container xs={8} style={{ margin: 'auto' }} justify="center">
+        <Grid item container spacing={2} style={{ minWidth: '40rem' }}>
+          <Grid item xs={2}>
+            <Paper
+              className={classes.legend}
+              style={{ background: 'rgb(120, 107, 255)' }}
+            >
+              <Typography variant="subtitle2">idle</Typography>
+            </Paper>
+          </Grid>
+          <Grid item xs={2}>
+            <Paper className={classes.legend} style={{ background: '#5747ff' }}>
+              <Typography variant="subtitle2">selected</Typography>
+            </Paper>
+          </Grid>
+          <Grid item xs={2}>
+            <Paper
+              className={classes.legend}
+              style={{ background: 'rgb(60, 49, 178)' }}
+            >
+              <Typography variant="subtitle2">swap</Typography>
+            </Paper>
+          </Grid>
+          <Grid item xs={2}>
+            <Paper className={classes.legend} style={{ background: 'green' }}>
+              <Typography variant="subtitle2">done</Typography>
+            </Paper>
+          </Grid>
+          <Grid item xs={2}>
+            <Paper className={classes.legend} style={{ background: 'red' }}>
+              <Typography variant="subtitle2">moved</Typography>
+            </Paper>
+          </Grid>
+          <Grid item xs={2}>
+            <Paper
+              className={classes.legend}
+              style={{ background: 'darkgoldenrod' }}
+            >
+              <Typography variant="subtitle2">pivot</Typography>
+            </Paper>
+          </Grid>
+        </Grid>
       </Grid>
     </React.Fragment>
   );

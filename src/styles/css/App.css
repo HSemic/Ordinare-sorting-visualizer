@@ -7,11 +7,11 @@ html {
 }
 
 .barSelected {
-  background-color: rgb(60, 49, 178);
+  background-color: #5747ff;
 }
 
 .barSwapped {
-  background-color: #5747ff;
+  background-color: rgb(60, 49, 178);
 }
 
 .barDone {

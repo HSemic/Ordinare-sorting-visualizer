@@ -86,6 +86,6 @@ export const getQuickSortAnimations = (arr: number[]) => {
 
   quickSort(array, 0, array.length - 1);
 
-  animations.push(['doneall']);
+  animations.push(['doneall', 'all bars in final positions']);
   return animations;
 };

@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) =>
     sectionSort: {
       // backgroundColor: "#8f94fb",
       padding: theme.custom.sectionPadding,
-      height: theme.custom.sectionHeight,
+      height: 'auto',
       position: 'relative',
       [theme.breakpoints.down('md')]: {
         height: 'auto'

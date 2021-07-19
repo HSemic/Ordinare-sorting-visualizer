@@ -20,7 +20,7 @@ import logo from '../../assets/img/logo/logo1.png';
 
 import Button from '@material-ui/core/Button';
 import Buttons from './NavButtons';
-import Drawer from './NavDrawer';
+import NavDrawer from './NavDrawer';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { switchTheme } from './uiSlice';
@@ -152,55 +152,62 @@ const NavBar = ({ refs }: NavBarProps): React.ReactElement => {
     />
   );
 
-  const renderedDrawer = (
-    <Drawer
-      items={config.menuItems}
-      iconButtons={[gitHubButton, lightDarkSwitch]}
-      refs={refs}
-    />
-  );
-
   // NavBar return JSX
 
-  return (
+  const logoButtonJSX = (
+    <Button
+      classes={{ root: classes.logoButton }}
+      disableFocusRipple={true}
+      disableRipple={true}
+      onClick={() =>
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        })
+      }
+    >
+      <Image
+        style={{
+          backgroundColor: 'transparent',
+          padding: 0,
+          margin: '1.5rem 0 1.5rem 1.5rem',
+          [theme.breakpoints.down('md')]: {
+            height: '1rem'
+          }
+        }}
+        imageStyle={{
+          position: 'relative',
+          [theme.breakpoints.down('md')]: {
+            width: '3rem'
+          }
+        }}
+        src={logo}
+      />
+    </Button>
+  );
+
+  const navBarJSX = (
     <ElevationScroll>
       <AppBar color="inherit" position="fixed">
         <Toolbar classes={{ root: classes.toolbarRoot }} disableGutters>
-          <Button
-            classes={{ root: classes.logoButton }}
-            disableFocusRipple={true}
-            disableRipple={true}
-            onClick={() =>
-              window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-              })
-            }
-          >
-            <Image
-              style={{
-                backgroundColor: 'transparent',
-                padding: 0,
-                margin: '1.5rem 0 1.5rem 1.5rem',
-                [theme.breakpoints.down('md')]: {
-                  height: '1rem'
-                }
-              }}
-              imageStyle={{
-                position: 'relative',
-                [theme.breakpoints.down('md')]: {
-                  width: '3rem'
-                }
-              }}
-              src={logo}
-            />
-          </Button>
-          {matches ? renderedDrawer : renderedButtons}
+          {logoButtonJSX}
+          {renderedButtons}
           {/* <Button color="inherit">Login</Button> */}
         </Toolbar>
       </AppBar>
     </ElevationScroll>
   );
+
+  const renderedDrawer = (
+    <NavDrawer
+      items={config.menuItems}
+      iconButtons={[gitHubButton, lightDarkSwitch]}
+      refs={refs}
+      logoButton={logoButtonJSX}
+    />
+  );
+
+  return matches ? renderedDrawer : navBarJSX;
 };
 
 export default NavBar;

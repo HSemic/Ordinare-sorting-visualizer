@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: 'flex-end',
       flexDirection: 'row',
       width: '100%',
-      minWidth: '40rem',
+      minWidth: '35rem',
       padding: '1rem',
       height: '25rem',
       [theme.breakpoints.down('md')]: {
@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme: Theme) =>
     progressBar: {
       height: '1rem',
       width: '100%',
-      minWidth: '40rem',
+      minWidth: '35rem',
       marginTop: '1rem'
     },
     legend: {
@@ -164,7 +164,8 @@ const SortingContainer = (): React.ReactElement => {
       const t = setTimeout(() => {
         setCurrentBars(trace[i]);
         setCurrentItem(i);
-        setExplanation(animations[i][animations[i].length - 1] as string);
+        if (animations[i])
+          setExplanation(animations[i][animations[i].length - 1] as string);
       }, (defSpeedMs / speed) * j);
       timeouts.push(t);
       j++;
@@ -187,6 +188,8 @@ const SortingContainer = (): React.ReactElement => {
   const restart = () => {
     timeouts.forEach((timeout) => clearTimeout(timeout));
     setCurrentItem(0);
+    if (animations[0])
+      setExplanation(animations[0][animations[0].length - 1] as string);
     setCurrentBars(trace[0]);
   };
 
@@ -194,6 +197,12 @@ const SortingContainer = (): React.ReactElement => {
     if (currentItem === timeouts.length - 1) return;
 
     setCurrentItem(currentItem + 1);
+    if (animations[currentItem + 1])
+      setExplanation(
+        animations[currentItem + 1][
+          animations[currentItem + 1].length - 1
+        ] as string
+      );
     setCurrentBars(trace[currentItem + 1]);
   };
 
@@ -201,6 +210,12 @@ const SortingContainer = (): React.ReactElement => {
     if (currentItem === 0) return;
 
     setCurrentItem(currentItem - 1);
+    if (animations[currentItem - 1])
+      setExplanation(
+        animations[currentItem - 1][
+          animations[currentItem - 1].length - 1
+        ] as string
+      );
     setCurrentBars(trace[currentItem - 1]);
   };
 
@@ -232,10 +247,6 @@ const SortingContainer = (): React.ReactElement => {
   useEffect(() => {
     if (playing === true) run(currentItem);
   }, [currentItem]);
-
-  useEffect(() => {
-    console.log(explanation);
-  }, [explanation]);
 
   return (
     <React.Fragment>
@@ -313,10 +324,10 @@ const SortingContainer = (): React.ReactElement => {
         item
         container
         xs={8}
-        style={{ margin: 'auto', marginTop: '3rem' }}
+        style={{ margin: 'auto', marginTop: '2.5rem' }}
         justify="center"
       >
-        <Grid item container spacing={2} style={{ minWidth: '40rem' }}>
+        <Grid item container spacing={2} style={{ minWidth: '35rem' }}>
           <Grid item xs={2}>
             <Paper
               className={classes.legend}

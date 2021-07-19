@@ -9,12 +9,13 @@ import ListItemText from '@material-ui/core/ListItemText';
 import MenuIcon from '@material-ui/icons/Menu';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import IconButton from '@material-ui/core/IconButton';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 
 import { switchValue } from './uiSlice';
 import { sectionScrollOffset } from '../../app/config';
+
+import { darken } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -32,11 +33,18 @@ const useStyles = makeStyles((theme: Theme) =>
       fontSize: '4rem'
     },
     drawerIconContainer: {
+      position: 'fixed',
+      top: '1.5rem',
+      right: '2.5rem',
       color: 'inherit',
-      marginLeft: 'auto',
-      opacity: '.88',
+      height: '4.5rem',
+      width: '4.5rem',
+      padding: '2.5rem',
+      border: '1px solid grey',
+      background: theme.palette.background.paper,
+      zIndex: theme.zIndex.drawer,
       '&:hover': {
-        opacity: '1'
+        background: darken(theme.palette.background.paper, 0.1)
       }
     },
     drawerItem: {
@@ -53,12 +61,14 @@ interface DrawerProps {
   items: string[];
   iconButtons: JSX.Element[];
   refs: (React.RefObject<HTMLDivElement> | React.MutableRefObject<undefined>)[];
+  logoButton: JSX.Element;
 }
 
 const NavDrawer = ({
   items,
   iconButtons,
-  refs
+  refs,
+  logoButton
 }: DrawerProps): React.ReactElement => {
   const classes = useStyles();
 
@@ -73,8 +83,9 @@ const NavDrawer = ({
     /iPad|iPhone|iPod/.test(navigator.userAgent);
 
   const list = (
-    <List disablePadding>
-      {items.map((item: string, index) => {
+    <List disablePadding dense>
+      {logoButton}
+      {items.map((item, index) => {
         return (
           <ListItem
             key={index}
@@ -107,6 +118,9 @@ const NavDrawer = ({
           </ListItem>
         );
       })}
+      <ListItem>
+        {iconButtons[0]} {iconButtons[1]}
+      </ListItem>
     </List>
   );
 
@@ -120,27 +134,17 @@ const NavDrawer = ({
         onClose={() => setOpenDrawer(false)}
         variant="persistent"
       >
-        <div className={classes.toolbarMargin}></div>
+        {/* <div className={classes.toolbarMargin}></div> */}
         {list}
       </SwipeableDrawer>
 
-      <ButtonGroup
-        component="div"
-        // style={{ right: "5rem", position: "absolute" }}
+      <IconButton
+        className={classes.drawerIconContainer}
+        onClick={() => setOpenDrawer(!openDrawer)}
         disableRipple
-        disableFocusRipple
       >
-        {iconButtons[0]}
-        {iconButtons[1]}
-
-        <IconButton
-          className={classes.drawerIconContainer}
-          onClick={() => setOpenDrawer(!openDrawer)}
-          disableRipple
-        >
-          <MenuIcon className={classes.drawerIcon} />
-        </IconButton>
-      </ButtonGroup>
+        <MenuIcon className={classes.drawerIcon} />
+      </IconButton>
     </React.Fragment>
   );
 

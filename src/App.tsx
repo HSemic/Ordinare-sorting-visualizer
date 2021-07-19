@@ -21,8 +21,9 @@ import { useAppSelector } from './app/hooks';
 import logo from './assets/img/logo/logo1.png';
 
 import ReactGA from 'react-ga';
+import { gaTrackingId } from './app/trackingConfig';
 
-ReactGA.initialize('UA-190519034-1');
+ReactGA.initialize(gaTrackingId);
 
 const defFontSize = '3.1rem';
 

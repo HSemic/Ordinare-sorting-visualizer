@@ -78,8 +78,7 @@ const useStyles = makeStyles((theme: Theme) =>
 // Hero component yea
 const SectionHero = React.forwardRef<HTMLDivElement>(
   (_, ref): React.ReactElement => {
-    //gg gg gg gg gg gg gg gg
-    const classes = useStyles(); //h
+    const classes = useStyles();
     const theme = useTheme();
 
     const dispatch = useAppDispatch();

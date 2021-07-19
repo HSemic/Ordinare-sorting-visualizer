@@ -2,18 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { sortingAlgorithms, arraySizes, sortingSpeeds } from '../../app/config';
 
-import { generateRandomFloatNumber } from './sortAnimate';
-
 // TYPES
-
-// const listAlgorithms = Object.values(sortingAlgorithms);
-// type SortingAlgorithm = typeof listAlgorithms[number];
-
-// const listSizes = Object.values(arraySizes);
-// type ArraySize = typeof listSizes[number];
-
-// const listSpeeds = Object.values(sortingSpeeds);
-// type SortingSpeed = typeof listSpeeds[number];
 
 interface SortingState {
   sortingAlgorithm: number;

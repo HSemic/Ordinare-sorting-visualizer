@@ -12,7 +12,7 @@ import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useAppDispatch } from '../../app/hooks';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -29,10 +29,6 @@ const useStyles = makeStyles((theme: Theme) =>
     }
   })
 );
-
-// interface Options {
-//   [key: string]: number;
-// }
 
 interface DropDownMenuProps {
   options: Map<string, number>;
@@ -83,8 +79,6 @@ const DropDownMenu = ({
 
     setOpen(false);
   };
-
-  const state = useAppSelector((state) => state.sorting);
 
   const onItemClick = (
     event:

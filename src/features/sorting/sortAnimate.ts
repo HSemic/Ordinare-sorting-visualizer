@@ -20,7 +20,7 @@ export const swap = (arr: number[], i: number, j: number) => {
   [arr[i], arr[j]] = [arr[j], arr[i]];
 };
 
-export const animats = (
+export const animate = (
   bars: JSX.Element[],
   anims: (string | number)[][]
 ): JSX.Element[][] => {

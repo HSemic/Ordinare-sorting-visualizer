@@ -31,7 +31,7 @@ import {
   defSpeedMs
 } from '../../app/config';
 
-import { generateArray, animats } from '../sorting/sortAnimate';
+import { generateArray, animate } from '../sorting/sortAnimate';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { getBubbleSortAnimations } from '../sorting/bubbleSort';
 import { getMergeSortAnimations } from '../sorting/mergeSort';
@@ -137,6 +137,7 @@ const SortingContainer = (): React.ReactElement => {
           }}
         ></div>
       );
+      return null;
     });
 
     return localBars;
@@ -231,12 +232,11 @@ const SortingContainer = (): React.ReactElement => {
 
   useEffect(() => {
     setCurrentBars(trace[0]);
-    console.log(animations);
   }, [trace]);
 
   useEffect(() => {
-    const brs = createBars(array);
-    setTrace(animats(brs, animations));
+    const bars = createBars(array);
+    setTrace(animate(bars, animations));
   }, [animations]);
 
   useEffect(() => {

@@ -24,6 +24,7 @@ import NavDrawer from './NavDrawer';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { switchTheme } from './uiSlice';
+import Link from '@material-ui/core/Link';
 
 // JSS classes
 const useStyles = makeStyles((theme: Theme) =>
@@ -118,12 +119,18 @@ const NavBar = ({ refs }: NavBarProps): React.ReactElement => {
 
   const darkThemeActive = useAppSelector((state) => state.ui.darkTheme);
 
+  const preventDefault = (event: React.SyntheticEvent) =>
+    event.preventDefault();
+
   const gitHubButton = (
     <IconButton
       edge="start"
       className={classes.menuButton}
       aria-label="menu"
       key={0}
+      href="https://github.com/HSemic/Ordinare-sorting-visualizer"
+      target="_blank"
+      rel="noopener noreferrer"
     >
       <GitHub className={classes.iconGitHub} />
     </IconButton>

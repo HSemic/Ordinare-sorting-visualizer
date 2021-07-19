@@ -119,9 +119,6 @@ const NavBar = ({ refs }: NavBarProps): React.ReactElement => {
 
   const darkThemeActive = useAppSelector((state) => state.ui.darkTheme);
 
-  const preventDefault = (event: React.SyntheticEvent) =>
-    event.preventDefault();
-
   const gitHubButton = (
     <IconButton
       edge="start"

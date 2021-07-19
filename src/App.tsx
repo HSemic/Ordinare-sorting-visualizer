@@ -119,8 +119,6 @@ const App = (): React.ReactElement => {
     </React.Fragment>
   );
 
-  console.log(theme);
-
   return (
     <ThemeProvider theme={responsiveFontSizes(theme)}>{content}</ThemeProvider>
   );

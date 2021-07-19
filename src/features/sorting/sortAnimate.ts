@@ -67,7 +67,7 @@ export const animats = (
           currentTrace[anims[i][0] as number] = React.cloneElement(
             currentTrace[anims[i][0] as number],
             {
-              className: 'barSelected'
+              className: 'barObserved'
             }
           );
         } else if (anims[i][1] === 'moved') {
@@ -144,7 +144,7 @@ export const animats = (
           currentTrace[anims[i][0] as number] = React.cloneElement(
             currentTrace[anims[i][0] as number],
             {
-              className: 'barSelected'
+              className: 'barObserved'
             }
           );
           currentTrace[anims[i][1] as number] = React.cloneElement(

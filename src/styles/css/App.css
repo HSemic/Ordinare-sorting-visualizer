@@ -21,3 +21,7 @@ html {
 .barMoved {
   background-color: red;
 }
+
+.barObserved {
+  background-color: darkgoldenrod;
+}

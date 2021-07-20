@@ -45,6 +45,9 @@ const useStyles = makeStyles((theme: Theme) =>
       zIndex: theme.zIndex.drawer,
       '&:hover': {
         background: darken(theme.palette.background.paper, 0.1)
+      },
+      '&:active': {
+        background: darken(theme.palette.background.paper, 0.1)
       }
     },
     drawerItem: {
@@ -132,7 +135,7 @@ const NavDrawer = ({
         open={openDrawer}
         onOpen={() => setOpenDrawer(true)}
         onClose={() => setOpenDrawer(false)}
-        variant="persistent"
+        // variant="persistent"
       >
         {/* <div className={classes.toolbarMargin}></div> */}
         {list}

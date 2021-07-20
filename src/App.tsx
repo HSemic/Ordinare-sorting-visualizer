@@ -95,7 +95,7 @@ const App = (): React.ReactElement => {
         />
         <meta
           name="keywords"
-          content="sorting, visualizer, react, typescript, materialui"
+          content="sorting, visualizer, algorithms, react, typescript, materialui"
         ></meta>
         <meta name="author" content="HSemic"></meta>
       </Helmet>

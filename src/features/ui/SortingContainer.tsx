@@ -43,6 +43,7 @@ import { getHeapSortAnimations } from '../sorting/heapSort';
 import { normalise } from '../../helpers/helpers';
 
 import { v4 as uuidv4 } from 'uuid';
+import { useMediaQuery, useTheme } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -105,6 +106,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const SortingContainer = (): React.ReactElement => {
   const classes = useStyles();
+  const theme = useTheme();
 
   const [currentItem, setCurrentItem] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
@@ -126,6 +128,8 @@ const SortingContainer = (): React.ReactElement => {
     const arr = generateArray(size);
     dispatch(setArray(arr));
   };
+
+  const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
 
   const createBars = (array: number[]) => {
     const localBars: JSX.Element[] = [];
@@ -330,95 +334,112 @@ const SortingContainer = (): React.ReactElement => {
         xs={8}
         style={{ margin: 'auto', marginTop: '2.5rem' }}
         justify="center"
+        spacing={0}
       >
-        <Grid item container spacing={2} style={{ minWidth: '30rem' }}>
+        <Grid
+          item
+          container
+          xs={12}
+          md={6}
+          spacing={2}
+          style={{ minWidth: '30rem' }}
+        >
           <Grid
             item
             container
-            xs={1}
-            alignContent="space-around"
+            xs={4}
             alignItems="center"
+            justify={matchesMD ? 'flex-start' : 'center'}
           >
             <div
               className={classes.legendSquare}
               style={{ backgroundColor: 'rgb(120, 107, 255)' }}
             ></div>
-            <Typography style={{ marginLeft: '5px' }} variant="subtitle2">
+            <Typography style={{ marginLeft: '5px' }} variant="body2">
               idle
             </Typography>
           </Grid>
           <Grid
             item
             container
-            xs={1}
-            alignContent="space-around"
+            xs={4}
             alignItems="center"
+            justify={matchesMD ? 'flex-start' : 'center'}
           >
             <div
               className={classes.legendSquare}
               style={{ backgroundColor: '#5747ff' }}
             ></div>
-            <Typography style={{ marginLeft: '5px' }} variant="subtitle2">
+            <Typography style={{ marginLeft: '5px' }} variant="body2">
               select
             </Typography>
           </Grid>
           <Grid
             item
             container
-            xs={1}
-            alignContent="space-around"
+            xs={4}
             alignItems="center"
+            justify={matchesMD ? 'flex-start' : 'center'}
           >
             <div
               className={classes.legendSquare}
               style={{ backgroundColor: 'rgb(60, 49, 178)' }}
             ></div>
-            <Typography style={{ marginLeft: '5px' }} variant="subtitle2">
+            <Typography style={{ marginLeft: '5px' }} variant="body2">
               swap
             </Typography>
           </Grid>
+        </Grid>
+        <Grid
+          item
+          container
+          xs={12}
+          md={6}
+          spacing={2}
+          style={{ minWidth: '30rem' }}
+        >
           <Grid
             item
             container
-            xs={1}
-            alignContent="space-around"
+            xs={4}
             alignItems="center"
+            justify={matchesMD ? 'flex-start' : 'center'}
           >
             <div
               className={classes.legendSquare}
               style={{ backgroundColor: 'red' }}
             ></div>
-            <Typography style={{ marginLeft: '5px' }} variant="subtitle2">
+            <Typography style={{ marginLeft: '5px' }} variant="body2">
               moved
             </Typography>
           </Grid>
           <Grid
             item
             container
-            xs={1}
-            alignContent="space-around"
+            xs={4}
             alignItems="center"
+            justify={matchesMD ? 'flex-start' : 'center'}
           >
             <div
               className={classes.legendSquare}
               style={{ backgroundColor: 'goldenrod' }}
             ></div>
-            <Typography style={{ marginLeft: '5px' }} variant="subtitle2">
+            <Typography style={{ marginLeft: '5px' }} variant="body2">
               pivot
             </Typography>
           </Grid>
           <Grid
             item
             container
-            xs={1}
-            alignContent="space-around"
+            xs={4}
             alignItems="center"
+            justify={matchesMD ? 'flex-start' : 'center'}
           >
             <div
               className={classes.legendSquare}
               style={{ backgroundColor: 'lightgreen' }}
             ></div>
-            <Typography style={{ marginLeft: '5px' }} variant="subtitle2">
+            <Typography style={{ marginLeft: '5px' }} variant="body2">
               done
             </Typography>
           </Grid>

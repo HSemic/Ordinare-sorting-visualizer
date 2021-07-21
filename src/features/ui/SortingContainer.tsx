@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: 'flex-end',
       flexDirection: 'row',
       width: '100%',
-      minWidth: '35rem',
+      minWidth: '30rem',
       padding: '1rem',
       height: '25rem',
       [theme.breakpoints.down('md')]: {
@@ -72,13 +72,17 @@ const useStyles = makeStyles((theme: Theme) =>
     progressBar: {
       height: '1rem',
       width: '100%',
-      minWidth: '35rem',
+      minWidth: '30rem',
       marginTop: '1rem'
     },
     legend: {
       color: '#F7F7FF',
       display: 'flex',
       justifyContent: 'center'
+    },
+    legendSquare: {
+      width: '15px',
+      height: '15px'
     },
     explanationContainer: {
       marginTop: '3rem',
@@ -256,7 +260,7 @@ const SortingContainer = (): React.ReactElement => {
           <DropDownMenu
             options={sortingAlgorithms}
             defaultOptionIndex={0}
-            title="Algorithm"
+            title=""
             onOptionSwitch={switchAlgorithm}
           />
           <DropDownMenu
@@ -327,45 +331,96 @@ const SortingContainer = (): React.ReactElement => {
         style={{ margin: 'auto', marginTop: '2.5rem' }}
         justify="center"
       >
-        <Grid item container spacing={2} style={{ minWidth: '35rem' }}>
-          <Grid item xs={2}>
-            <Paper
-              className={classes.legend}
-              style={{ background: 'rgb(120, 107, 255)' }}
-            >
-              <Typography variant="subtitle2">idle</Typography>
-            </Paper>
+        <Grid item container spacing={2} style={{ minWidth: '30rem' }}>
+          <Grid
+            item
+            container
+            xs={1}
+            alignContent="space-around"
+            alignItems="center"
+          >
+            <div
+              className={classes.legendSquare}
+              style={{ backgroundColor: 'rgb(120, 107, 255)' }}
+            ></div>
+            <Typography style={{ marginLeft: '5px' }} variant="subtitle2">
+              idle
+            </Typography>
           </Grid>
-          <Grid item xs={2}>
-            <Paper className={classes.legend} style={{ background: '#5747ff' }}>
-              <Typography variant="subtitle2">selected</Typography>
-            </Paper>
+          <Grid
+            item
+            container
+            xs={1}
+            alignContent="space-around"
+            alignItems="center"
+          >
+            <div
+              className={classes.legendSquare}
+              style={{ backgroundColor: '#5747ff' }}
+            ></div>
+            <Typography style={{ marginLeft: '5px' }} variant="subtitle2">
+              select
+            </Typography>
           </Grid>
-          <Grid item xs={2}>
-            <Paper
-              className={classes.legend}
-              style={{ background: 'rgb(60, 49, 178)' }}
-            >
-              <Typography variant="subtitle2">swap</Typography>
-            </Paper>
+          <Grid
+            item
+            container
+            xs={1}
+            alignContent="space-around"
+            alignItems="center"
+          >
+            <div
+              className={classes.legendSquare}
+              style={{ backgroundColor: 'rgb(60, 49, 178)' }}
+            ></div>
+            <Typography style={{ marginLeft: '5px' }} variant="subtitle2">
+              swap
+            </Typography>
           </Grid>
-          <Grid item xs={2}>
-            <Paper className={classes.legend} style={{ background: 'green' }}>
-              <Typography variant="subtitle2">done</Typography>
-            </Paper>
+          <Grid
+            item
+            container
+            xs={1}
+            alignContent="space-around"
+            alignItems="center"
+          >
+            <div
+              className={classes.legendSquare}
+              style={{ backgroundColor: 'red' }}
+            ></div>
+            <Typography style={{ marginLeft: '5px' }} variant="subtitle2">
+              moved
+            </Typography>
           </Grid>
-          <Grid item xs={2}>
-            <Paper className={classes.legend} style={{ background: 'red' }}>
-              <Typography variant="subtitle2">moved</Typography>
-            </Paper>
+          <Grid
+            item
+            container
+            xs={1}
+            alignContent="space-around"
+            alignItems="center"
+          >
+            <div
+              className={classes.legendSquare}
+              style={{ backgroundColor: 'goldenrod' }}
+            ></div>
+            <Typography style={{ marginLeft: '5px' }} variant="subtitle2">
+              pivot
+            </Typography>
           </Grid>
-          <Grid item xs={2}>
-            <Paper
-              className={classes.legend}
-              style={{ background: 'darkgoldenrod' }}
-            >
-              <Typography variant="subtitle2">pivot</Typography>
-            </Paper>
+          <Grid
+            item
+            container
+            xs={1}
+            alignContent="space-around"
+            alignItems="center"
+          >
+            <div
+              className={classes.legendSquare}
+              style={{ backgroundColor: 'lightgreen' }}
+            ></div>
+            <Typography style={{ marginLeft: '5px' }} variant="subtitle2">
+              done
+            </Typography>
           </Grid>
         </Grid>
       </Grid>
